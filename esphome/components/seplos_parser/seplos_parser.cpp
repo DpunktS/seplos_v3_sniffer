@@ -16,7 +16,7 @@ void SeplosParser::setup() {
        &pack_voltage_, &current_, &remaining_capacity_, &total_capacity_,
        &total_discharge_capacity_, &soc_, &soh_, &cycle_count_,
        &average_cell_voltage_, &average_cell_temp_, &max_cell_voltage_,
-       &min_cell_voltage_, &max_cell_temp_, &min_cell_temp_,
+       &min_cell_voltage_, &delta_cell_voltage_, &max_cell_temp_, &min_cell_temp_,
        &maxdiscurt_, &maxchgcurt_, &cell_1_, &cell_2_, &cell_3_, &cell_4_,
        &cell_5_, &cell_6_, &cell_7_, &cell_8_, &cell_9_, &cell_10_,
        &cell_11_, &cell_12_, &cell_13_, &cell_14_, &cell_15_, &cell_16_,
@@ -44,7 +44,7 @@ void SeplosParser::setup() {
        {"total_discharge_capacity", &total_discharge_capacity_}, {"soc", &soc_},
        {"soh", &soh_}, {"cycle_count", &cycle_count_}, {"average_cell_voltage", &average_cell_voltage_},
        {"average_cell_temp", &average_cell_temp_}, {"max_cell_voltage", &max_cell_voltage_},
-       {"min_cell_voltage", &min_cell_voltage_}, {"max_cell_temp", &max_cell_temp_},
+       {"min_cell_voltage", &min_cell_voltage_}, {"delta_cell_voltage", &delta_cell_voltage_}, {"max_cell_temp", &max_cell_temp_},
        {"min_cell_temp", &min_cell_temp_}, {"maxdiscurt", &maxdiscurt_},
        {"maxchgcurt", &maxchgcurt_}, {"cell_1", &cell_1_}, {"cell_2", &cell_2_},
        {"cell_3", &cell_3_}, {"cell_4", &cell_4_}, {"cell_5", &cell_5_},
@@ -187,6 +187,7 @@ void SeplosParser::process_packet(size_t length) {
     updates.emplace_back(average_cell_temp_[bms_index], (buffer[21] << 8 | buffer[22]) / 10.0f - 273.15f);
     updates.emplace_back(max_cell_voltage_[bms_index], (buffer[23] << 8 | buffer[24]) / 1000.0f);
     updates.emplace_back(min_cell_voltage_[bms_index], (buffer[25] << 8 | buffer[26]) / 1000.0f);
+    updates.emplace_back(delta_cell_voltage_[bms_index], ((buffer[23] << 8 | buffer[24]) - (buffer[25] << 8 | buffer[26]));
     updates.emplace_back(max_cell_temp_[bms_index], (buffer[27] << 8 | buffer[28]) / 10.0f - 273.15f);
     updates.emplace_back(min_cell_temp_[bms_index], (buffer[29] << 8 | buffer[30]) / 10.0f - 273.15f);
     updates.emplace_back(maxdiscurt_[bms_index], (buffer[33] << 8 | buffer[34]) / 1.0f);
