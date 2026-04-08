@@ -29,6 +29,7 @@ average_cell_voltage
 average_cell_temp
 max_cell_voltage
 min_cell_voltage
+delta_cell_voltage
 max_cell_temp
 min_cell_temp
 maxdiscurt
