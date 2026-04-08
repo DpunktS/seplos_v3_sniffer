@@ -74,6 +74,7 @@ protected:
   std::vector<sensor::Sensor *> average_cell_temp_;
   std::vector<sensor::Sensor *> max_cell_voltage_;
   std::vector<sensor::Sensor *> min_cell_voltage_;
+  std::vector<sensor::Sensor *> delta_cell_voltage_;
   std::vector<sensor::Sensor *> max_cell_temp_;
   std::vector<sensor::Sensor *> min_cell_temp_;
   std::vector<sensor::Sensor *> maxdiscurt_;
