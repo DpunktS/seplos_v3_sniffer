@@ -113,6 +113,13 @@ sensor:
         - throttle: ${time}s
   - platform: seplos_parser
     seplos_parser_id: seplos_v3
+    name: bms0 delta_cell_voltage
+    unit_of_measurement: mV
+    accuracy_decimals: 0
+    filters:
+        - throttle: ${time}s
+  - platform: seplos_parser
+    seplos_parser_id: seplos_v3
     name: bms0 max_cell_temp
     unit_of_measurement: °C
     accuracy_decimals: 1
@@ -383,6 +390,13 @@ sensor:
     name: bms1 min_cell_voltage
     unit_of_measurement: V
     accuracy_decimals: 3
+    filters:
+        - throttle: ${time}s
+  - platform: seplos_parser
+    seplos_parser_id: seplos_v3
+    name: bms1 delta_cell_voltage
+    unit_of_measurement: mV
+    accuracy_decimals: 0
     filters:
         - throttle: ${time}s
   - platform: seplos_parser
