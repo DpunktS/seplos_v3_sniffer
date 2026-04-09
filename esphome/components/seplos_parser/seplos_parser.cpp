@@ -187,7 +187,7 @@ void SeplosParser::process_packet(size_t length) {
     updates.emplace_back(average_cell_temp_[bms_index], (buffer[21] << 8 | buffer[22]) / 10.0f - 273.15f);
     updates.emplace_back(max_cell_voltage_[bms_index], (buffer[23] << 8 | buffer[24]) / 1000.0f);
     updates.emplace_back(min_cell_voltage_[bms_index], (buffer[25] << 8 | buffer[26]) / 1000.0f);
-    updates.emplace_back(delta_cell_voltage_[bms_index], ((buffer[23] << 8 | buffer[24]) - (buffer[25] << 8 | buffer[26]));
+    updates.emplace_back(delta_cell_voltage_[bms_index], ((buffer[23] << 8 | buffer[24]) - (buffer[25] << 8 | buffer[26])));
     updates.emplace_back(max_cell_temp_[bms_index], (buffer[27] << 8 | buffer[28]) / 10.0f - 273.15f);
     updates.emplace_back(min_cell_temp_[bms_index], (buffer[29] << 8 | buffer[30]) / 10.0f - 273.15f);
     updates.emplace_back(maxdiscurt_[bms_index], (buffer[33] << 8 | buffer[34]) / 1.0f);
